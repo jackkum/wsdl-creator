@@ -36,6 +36,10 @@ class WSDLBuilder
     /**
      * @var string
      */
+    private $prefix;
+    /**
+     * @var string
+     */
     private $name;
     /**
      * @var string
@@ -77,6 +81,18 @@ class WSDLBuilder
     public static function instance(): WSDLBuilder
     {
         return new self();
+    }
+
+    public function getPrefix(): string
+    {
+        return (string) $this->prefix;
+    }
+
+    public function setPrefix(string $prefix): WSDLBuilder
+    {
+        $this->prefix = $prefix;
+
+        return $this;
     }
 
     public function getName(): string

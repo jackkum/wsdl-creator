@@ -43,6 +43,10 @@ final class WebService implements ClassAnnotation
     /**
      * @var string
      */
+    public $prefix;
+    /**
+     * @var string
+     */
     public $targetNamespace;
     /**
      * @var string
@@ -63,6 +67,7 @@ final class WebService implements ClassAnnotation
         $portName = $this->portName ?: $name;
         $builder
             ->setName($name)
+            ->setPrefix((string) $this->prefix)
             ->setTargetNamespace($this->targetNamespace)
             ->setNs($this->ns)
             ->setLocation($this->location)
