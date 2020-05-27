@@ -106,6 +106,7 @@ class XMLProvider
             'targetNamespace' => $targetNamespace,
             'xmlns:tns' => $targetNamespace,
             'xmlns:xsd' => 'http://www.w3.org/2001/XMLSchema',
+            'xmlns:wsdl' => 'http://schemas.xmlsoap.org/wsdl/',
             'xmlns:' . $this->XMLSoapVersion => 'http://schemas.xmlsoap.org/wsdl/' . $this->XMLSoapVersion . '/',
             'xmlns:soapenc' => "http://schemas.xmlsoap.org/soap/encoding/",
             'xmlns' => 'http://schemas.xmlsoap.org/wsdl/',
