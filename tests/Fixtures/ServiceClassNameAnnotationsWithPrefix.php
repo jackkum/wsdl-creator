@@ -21,56 +21,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-namespace WSDL\Annotation;
+namespace Fixtures;
 
-use ReflectionClass;
-use WSDL\Builder\WSDLBuilder;
+use WSDL\Annotation\WebService;
 
 /**
- * WebService
+ * ServiceClassNameAnnotations
  *
  * @author Piotr Olaszewski <piotroo89@gmail.com>
  *
- * @Annotation
- * @Target("CLASS")
+ * @WebService(
+ *     prefix="wsdl",
+ *     targetNamespace="http://foo.bar/webserviceannotations",
+ *     location="http://localhost/wsdl-creator/service.php",
+ *     ns="http://foo.bar/webserviceannotations/types"
+ * )
  */
-final class WebService implements ClassAnnotation
+class ServiceClassNameAnnotationsWithPrefix
 {
-    /**
-     * @var string
-     */
-    public $name;
-    /**
-     * @var string
-     */
-    public $prefix;
-    /**
-     * @var string
-     */
-    public $targetNamespace;
-    /**
-     * @var string
-     */
-    public $ns;
-    /**
-     * @var string
-     */
-    public $location;
-    /**
-     * @var string
-     */
-    public $portName;
-
-    public function build(WSDLBuilder $builder, ReflectionClass $class): void
-    {
-        $name = $this->name ?: $class->getShortName();
-        $portName = $this->portName ?: $name;
-        $builder
-            ->setName($name)
-            ->setPrefix((string) $this->prefix)
-            ->setTargetNamespace($this->targetNamespace)
-            ->setNs($this->ns)
-            ->setLocation($this->location)
-            ->setPortName($portName);
-    }
 }

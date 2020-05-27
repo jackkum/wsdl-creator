@@ -25,6 +25,7 @@ namespace Tests\WSDL\Builder;
 
 use Fixtures\ServiceAllAnnotations;
 use Fixtures\ServiceClassNameAnnotations;
+use Fixtures\ServiceClassNameAnnotationsWithPrefix;
 use Fixtures\ServiceWebMethods;
 use Fixtures\ServiceWithoutWebServiceAnnotation;
 use Ouzo\Tests\Assert;
@@ -108,6 +109,22 @@ class AnnotationWSDLBuilderTest extends TestCase
         //then
         $WSDLBuilder = $annotationWSDLBuilder->getBuilder();
         $this->assertEquals('ServiceClassNameAnnotations', $WSDLBuilder->getName());
+    }
+
+    /**
+     * @test
+     */
+    public function shouldCreateBuilderWithClassNameAndPrefix()
+    {
+        //given
+        $annotationWSDLBuilder = new AnnotationWSDLBuilder(ServiceClassNameAnnotationsWithPrefix::class);
+
+        //when
+        $annotationWSDLBuilder->build();
+
+        //then
+        $WSDLBuilder = $annotationWSDLBuilder->getBuilder();
+        $this->assertEquals('wsdl', $WSDLBuilder->getPrefix());
     }
 
     /**
