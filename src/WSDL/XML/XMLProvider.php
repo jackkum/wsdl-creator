@@ -278,8 +278,9 @@ class XMLProvider
         return XMLAttributeHelper::forDOM($this->DOMDocument)->createElement($elementName, $value);
     }
 
-    private function getTagName(String $name) : String {
-        if($this->builder->getPrefix()){
+    private function getTagName(String $name): String
+    {
+        if ($this->builder->getPrefix()) {
             return implode(":", [$this->builder->getPrefix(), $name]);
         }
 
